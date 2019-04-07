@@ -17,7 +17,7 @@ public class PayRequest {
     /**
      * 订单号.
      */
-    private String orderId;
+    private String orderNo;
 
     /**
      * 订单金额.
@@ -47,12 +47,12 @@ public class PayRequest {
         this.payTypeEnum = payTypeEnum;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public String getOrderNo() {
+        return orderNo;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
     }
 
     public BigDecimal getOrderAmount() {

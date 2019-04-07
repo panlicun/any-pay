@@ -43,10 +43,9 @@ public class WxAppPay implements WxPay {
     @Override
     public PayResponse unifiedorder(PayRequest request) {
         WxPayUnifiedorderRequest wxRequest = new WxPayUnifiedorderRequest();
-        wxRequest.setOutTradeNo(request.getOrderId());
+        wxRequest.setOutTradeNo(request.getOrderNo());
         wxRequest.setTotalFee(request.getOrderAmount().movePointRight(2).intValue());
         wxRequest.setBody(request.getOrderName());
-        wxRequest.setOpenid(request.getOpenid());
 
         wxRequest.setTradeType(new PayUtil().switchH5TradeType(request.getPayTypeEnum()));
         wxRequest.setAppid(wxAppPayConfig.getAppId());
