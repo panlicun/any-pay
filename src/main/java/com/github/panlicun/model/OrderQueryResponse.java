@@ -19,6 +19,17 @@ public class OrderQueryResponse {
      */
     private String resultMsg;
 
+    /**
+     * 订单编号
+     */
+    private String orderNo;
+
+    /**
+     * 订单金额
+     */
+    private Double orderAmount;
+
+
     public OrderStatusEnum getOrderStatusEnum() {
         return orderStatusEnum;
     }
@@ -33,5 +44,21 @@ public class OrderQueryResponse {
 
     public void setResultMsg(String resultMsg) {
         this.resultMsg = resultMsg;
+    }
+
+    public String getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
+    }
+
+    public Double getOrderAmount() {
+        return orderAmount;
+    }
+
+    public void setOrderAmount(Double orderAmount) {
+        this.orderAmount = orderAmount;
     }
 }

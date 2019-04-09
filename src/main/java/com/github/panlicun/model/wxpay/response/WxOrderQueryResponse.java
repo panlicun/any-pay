@@ -53,7 +53,7 @@ public class WxOrderQueryResponse {
     private String bankType;
 
     @Element(name = "total_fee", required = false)
-    private String totalFee;
+    private Integer totalFee;
 
     @Element(name = "settlement_total_fee", required = false)
     private String settlementTotalFee;
@@ -208,11 +208,11 @@ public class WxOrderQueryResponse {
         this.bankType = bankType;
     }
 
-    public String getTotalFee() {
+    public Integer getTotalFee() {
         return totalFee;
     }
 
-    public void setTotalFee(String totalFee) {
+    public void setTotalFee(Integer totalFee) {
         this.totalFee = totalFee;
     }
 

@@ -200,6 +200,8 @@ public class WxAppPay implements WxPay {
         OrderQueryResponse orderQueryResponse = new OrderQueryResponse();
         orderQueryResponse.setOrderStatusEnum(OrderStatusEnum.findByName(response.getTradeState()));
         orderQueryResponse.setResultMsg(response.getTradeStateDesc() == null ? "" : response.getTradeStateDesc());
+        orderQueryResponse.setOrderAmount(MoneyUtil.Fen2Yuan(response.getTotalFee()));
+        orderQueryResponse.setOrderNo(response.getOutTradeNo());
         return orderQueryResponse;
     }
 
