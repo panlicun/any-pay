@@ -1,10 +1,8 @@
 package com.github.panlicun.model.wxpay.request;
 
-import lombok.Data;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
-@Data
 @Root(name = "xml", strict = false)
 public class WxDownloadBillRequest {
 
@@ -36,4 +34,52 @@ public class WxDownloadBillRequest {
 //    @Element(name = "tar_type", required = false)
 //    private String tarType = "GZIP";
 
+
+    public String getAppid() {
+        return appid;
+    }
+
+    public void setAppid(String appid) {
+        this.appid = appid;
+    }
+
+    public String getMchId() {
+        return mchId;
+    }
+
+    public void setMchId(String mchId) {
+        this.mchId = mchId;
+    }
+
+    public String getNonceStr() {
+        return nonceStr;
+    }
+
+    public void setNonceStr(String nonceStr) {
+        this.nonceStr = nonceStr;
+    }
+
+    public String getSign() {
+        return sign;
+    }
+
+    public void setSign(String sign) {
+        this.sign = sign;
+    }
+
+    public String getBillDate() {
+        return billDate;
+    }
+
+    public void setBillDate(String billDate) {
+        this.billDate = billDate;
+    }
+
+    public String getBillType() {
+        return billType;
+    }
+
+    public void setBillType(String billType) {
+        this.billType = billType;
+    }
 }

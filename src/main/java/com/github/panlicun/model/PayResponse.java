@@ -1,6 +1,6 @@
 package com.github.panlicun.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+//import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.net.URI;
 
@@ -20,7 +20,7 @@ public class PayResponse {
 
     private String nonceStr;
 
-    @JsonProperty("package")
+//    @JsonProperty("package")
     private String packAge;
 
     private String signType;

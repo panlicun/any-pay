@@ -1,13 +1,13 @@
 package com.github.panlicun.enums;
 
 
-import com.github.panlicun.exception.BestPayException;
+import com.github.panlicun.exception.PayException;
 
 /**
  * 支付方式
  * Created by null on 2017/2/14.
  */
-public enum BestPayTypeEnum {
+public enum PayTypeEnum {
 
     ALIPAY_APP("alipay_app", "支付宝app"),
 
@@ -25,7 +25,7 @@ public enum BestPayTypeEnum {
 
     private String name;
 
-    BestPayTypeEnum(String code, String name) {
+    PayTypeEnum(String code, String name) {
         this.code = code;
         this.name = name;
     }
@@ -38,12 +38,12 @@ public enum BestPayTypeEnum {
         return name;
     }
 
-    public static BestPayTypeEnum getByCode(String code) {
-        for (BestPayTypeEnum bestPayTypeEnum : BestPayTypeEnum.values()) {
+    public static PayTypeEnum getByCode(String code) {
+        for (PayTypeEnum bestPayTypeEnum : PayTypeEnum.values()) {
             if (bestPayTypeEnum.getCode().equals(code)) {
                 return bestPayTypeEnum;
             }
         }
-        throw new BestPayException(BestPayResultEnum.PAY_TYPE_ERROR);
+        throw new PayException(PayResultEnum.PAY_TYPE_ERROR);
     }
 }

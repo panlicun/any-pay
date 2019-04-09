@@ -1,6 +1,6 @@
 package com.github.panlicun.utils;
 
-import com.github.panlicun.enums.BestPayTypeEnum;
+import com.github.panlicun.enums.PayTypeEnum;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -13,7 +13,7 @@ public class PayUtil {
     /**
      * H5支付交易类型选择
      */
-    public String switchH5TradeType(BestPayTypeEnum payTypeEnum){
+    public String switchH5TradeType(PayTypeEnum payTypeEnum){
         String tradeType = "JSAPI";
         switch (payTypeEnum){
             case WXPAY_H5:
@@ -45,5 +45,16 @@ public class PayUtil {
 
         toSign.append("key=").append(signKey);
         return DigestUtils.md5Hex(toSign.toString()).toUpperCase();
+    }
+
+    /**
+     * 校验签名
+     * @param params
+     * @param signKey
+     * @return
+     */
+    public Boolean verify(Map<String, String> params, String signKey) {
+        String sign = sign(params, signKey);
+        return sign.equals(params.get("sign"));
     }
 }

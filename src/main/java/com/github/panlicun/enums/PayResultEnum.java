@@ -3,7 +3,7 @@ package com.github.panlicun.enums;
 /**
  * Created by null on 2017/2/23.
  */
-public enum BestPayResultEnum {
+public enum PayResultEnum {
 
     UNKNOW_ERROR(-1, "未知异常"),
     SUCCESS(0, "成功"),
@@ -22,7 +22,7 @@ public enum BestPayResultEnum {
 
     private String msg;
 
-    BestPayResultEnum(Integer code, String msg) {
+    PayResultEnum(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
     }

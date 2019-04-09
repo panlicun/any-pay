@@ -1,13 +1,11 @@
 package com.github.panlicun.model;
 
-import lombok.Data;
 
 /**
  * 退款返回的参数
  * Created by 廖师兄
  * 2017-07-08 23:40
  */
-@Data
 public class RefundResponse {
 
     /**
@@ -35,5 +33,43 @@ public class RefundResponse {
      */
     private String outRefundNo;
 
+    public String getOrderId() {
+        return orderId;
+    }
 
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public Double getOrderAmount() {
+        return orderAmount;
+    }
+
+    public void setOrderAmount(Double orderAmount) {
+        this.orderAmount = orderAmount;
+    }
+
+    public String getOutTradeNo() {
+        return outTradeNo;
+    }
+
+    public void setOutTradeNo(String outTradeNo) {
+        this.outTradeNo = outTradeNo;
+    }
+
+    public String getRefundId() {
+        return refundId;
+    }
+
+    public void setRefundId(String refundId) {
+        this.refundId = refundId;
+    }
+
+    public String getOutRefundNo() {
+        return outRefundNo;
+    }
+
+    public void setOutRefundNo(String outRefundNo) {
+        this.outRefundNo = outRefundNo;
+    }
 }

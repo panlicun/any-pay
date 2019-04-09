@@ -1,18 +1,17 @@
 package com.github.panlicun.model;
 
-import com.lly835.bestpay.enums.BestPayTypeEnum;
-import lombok.Data;
+
+import com.github.panlicun.enums.PayTypeEnum;
 
 /**
  * 支付时请求参数
  */
-@Data
 public class RefundRequest {
 
     /**
      * 支付方式.
      */
-    private BestPayTypeEnum payTypeEnum;
+    private PayTypeEnum payTypeEnum;
 
     /**
      * 订单号.
@@ -23,4 +22,28 @@ public class RefundRequest {
      * 订单金额.
      */
     private Double orderAmount;
+
+    public PayTypeEnum getPayTypeEnum() {
+        return payTypeEnum;
+    }
+
+    public void setPayTypeEnum(PayTypeEnum payTypeEnum) {
+        this.payTypeEnum = payTypeEnum;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public Double getOrderAmount() {
+        return orderAmount;
+    }
+
+    public void setOrderAmount(Double orderAmount) {
+        this.orderAmount = orderAmount;
+    }
 }

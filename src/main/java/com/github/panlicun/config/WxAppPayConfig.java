@@ -93,4 +93,12 @@ public class WxAppPayConfig extends WxPayConfig{
     public void setKeyPath(String keyPath) {
         this.keyPath = keyPath;
     }
+
+    public SSLContext getSslContext() {
+        return sslContext;
+    }
+
+    public void setSslContext(SSLContext sslContext) {
+        this.sslContext = sslContext;
+    }
 }

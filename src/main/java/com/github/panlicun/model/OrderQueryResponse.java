@@ -1,16 +1,12 @@
 package com.github.panlicun.model;
 
-import com.lly835.bestpay.enums.OrderStatusEnum;
-import lombok.Builder;
-import lombok.Data;
+import com.github.panlicun.enums.OrderStatusEnum;
 
 /**
  * 订单查询结果
  * Created by 廖师兄
  * 2018-06-04 16:52
  */
-@Data
-@Builder
 public class OrderQueryResponse {
 
     /**
@@ -22,4 +18,20 @@ public class OrderQueryResponse {
      * 错误原因
      */
     private String resultMsg;
+
+    public OrderStatusEnum getOrderStatusEnum() {
+        return orderStatusEnum;
+    }
+
+    public void setOrderStatusEnum(OrderStatusEnum orderStatusEnum) {
+        this.orderStatusEnum = orderStatusEnum;
+    }
+
+    public String getResultMsg() {
+        return resultMsg;
+    }
+
+    public void setResultMsg(String resultMsg) {
+        this.resultMsg = resultMsg;
+    }
 }

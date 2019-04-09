@@ -1,6 +1,6 @@
 package com.github.panlicun.model;
 
-import com.github.panlicun.enums.BestPayTypeEnum;
+import com.github.panlicun.enums.PayTypeEnum;
 
 import java.math.BigDecimal;
 
@@ -12,7 +12,7 @@ public class PayRequest {
     /**
      * 支付方式.
      */
-    private BestPayTypeEnum payTypeEnum;
+    private PayTypeEnum payTypeEnum;
 
     /**
      * 订单号.
@@ -39,11 +39,11 @@ public class PayRequest {
      */
     private String spbillCreateIp;
 
-    public BestPayTypeEnum getPayTypeEnum() {
+    public PayTypeEnum getPayTypeEnum() {
         return payTypeEnum;
     }
 
-    public void setPayTypeEnum(BestPayTypeEnum payTypeEnum) {
+    public void setPayTypeEnum(PayTypeEnum payTypeEnum) {
         this.payTypeEnum = payTypeEnum;
     }
 

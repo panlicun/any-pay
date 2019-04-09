@@ -1,16 +1,16 @@
 package com.github.panlicun.exception;
 
 
-import com.github.panlicun.enums.BestPayResultEnum;
+import com.github.panlicun.enums.PayResultEnum;
 
 /**
  * Created by null on 2017/2/23.
  */
-public class BestPayException extends RuntimeException {
+public class PayException extends RuntimeException {
 
     private Integer code;
 
-    public BestPayException(BestPayResultEnum resultEnum) {
+    public PayException(PayResultEnum resultEnum) {
         super(resultEnum.getMsg());
         code = resultEnum.getCode();
     }
