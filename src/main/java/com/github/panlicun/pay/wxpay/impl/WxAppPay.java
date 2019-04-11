@@ -263,7 +263,7 @@ public class WxAppPay implements WxPay {
 
         //先构造要签名的map
         Map<String, String> map = new HashMap<>();
-        map.put("appId", response.getAppid());
+        map.put("appid", response.getAppid());
         map.put("partnerid", wxAppPayConfig.getMchId());
         map.put("prepayid", response.getPrepayId());
         map.put("package", "Sign=WXPay");
