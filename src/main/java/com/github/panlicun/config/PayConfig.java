@@ -2,7 +2,7 @@ package com.github.panlicun.config;
 
 import java.util.Objects;
 
-public class WxPayConfig {
+public class PayConfig {
 
     /**
      * 支付完成后的异步通知地址.

@@ -32,6 +32,13 @@ public interface WxPay {
      */
     OrderQueryResponse query(OrderQueryRequest request);
 
+    /**
+     * 关闭订单
+     * @param request
+     * @return
+     */
+    CloseOrderResponse closeOrder(CloseOrderRequest request);
+
 
 
 }

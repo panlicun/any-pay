@@ -1,9 +1,6 @@
 package com.github.panlicun.pay.wxpay;
 
-import com.github.panlicun.model.wxpay.response.WxOrderQueryResponse;
-import com.github.panlicun.model.wxpay.response.WxPaySandboxKeyResponse;
-import com.github.panlicun.model.wxpay.response.WxPaySyncResponse;
-import com.github.panlicun.model.wxpay.response.WxRefundResponse;
+import com.github.panlicun.model.wxpay.response.*;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -45,6 +42,22 @@ public interface WxPayApi {
     @POST("/pay/orderquery")
     Call<WxOrderQueryResponse> orderquery(@Body RequestBody body);
 
+
+    /**
+     * 下载对账单
+     * @param body
+     * @return
+     */
     @POST("/pay/downloadbill")
     Call<ResponseBody> downloadBill(@Body RequestBody body);
+
+    /**
+     * 关闭订单
+     * @param body
+     * @return
+     */
+    @POST("/pay/closeorder")
+    Call<WxCloseOrderResponse> closeOrder(@Body RequestBody body);
+
+
 }

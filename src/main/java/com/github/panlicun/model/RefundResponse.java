@@ -3,8 +3,6 @@ package com.github.panlicun.model;
 
 /**
  * 退款返回的参数
- * Created by 廖师兄
- * 2017-07-08 23:40
  */
 public class RefundResponse {
 

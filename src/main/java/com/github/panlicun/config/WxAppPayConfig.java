@@ -9,7 +9,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.KeyStore;
 
-public class WxAppPayConfig extends WxPayConfig{
+public class WxAppPayConfig extends PayConfig {
 
     /**
      * 应用ID

@@ -4,13 +4,11 @@ import com.github.panlicun.config.WxAppPayConfig;
 import com.github.panlicun.constants.WxPayConstants;
 import com.github.panlicun.enums.OrderStatusEnum;
 import com.github.panlicun.model.*;
+import com.github.panlicun.model.wxpay.request.WxCloseOrderRequest;
 import com.github.panlicun.model.wxpay.request.WxOrderQueryRequest;
 import com.github.panlicun.model.wxpay.request.WxPayRefundRequest;
 import com.github.panlicun.model.wxpay.request.WxPayUnifiedorderRequest;
-import com.github.panlicun.model.wxpay.response.WxOrderQueryResponse;
-import com.github.panlicun.model.wxpay.response.WxPayAsyncResponse;
-import com.github.panlicun.model.wxpay.response.WxPaySyncResponse;
-import com.github.panlicun.model.wxpay.response.WxRefundResponse;
+import com.github.panlicun.model.wxpay.response.*;
 import com.github.panlicun.pay.wxpay.WxPay;
 import com.github.panlicun.pay.wxpay.WxPayApi;
 import com.github.panlicun.utils.*;
@@ -200,9 +198,42 @@ public class WxAppPay implements WxPay {
         OrderQueryResponse orderQueryResponse = new OrderQueryResponse();
         orderQueryResponse.setOrderStatusEnum(OrderStatusEnum.findByName(response.getTradeState()));
         orderQueryResponse.setResultMsg(response.getTradeStateDesc() == null ? "" : response.getTradeStateDesc());
-        orderQueryResponse.setOrderAmount(MoneyUtil.Fen2Yuan(response.getTotalFee()));
+        orderQueryResponse.setOrderAmount(MoneyUtil.Fen2Yuan(response.getTotalFee() == null ? 0 : response.getTotalFee()));
         orderQueryResponse.setOrderNo(response.getOutTradeNo());
         return orderQueryResponse;
+    }
+
+    @Override
+    public CloseOrderResponse closeOrder(CloseOrderRequest request) {
+        WxCloseOrderRequest wxRequest = new WxCloseOrderRequest();
+        wxRequest.setOutTradeNo(request.getOrderNo());
+        wxRequest.setAppid(wxAppPayConfig.getAppId());
+        wxRequest.setMchId(wxAppPayConfig.getMchId());
+        wxRequest.setNonceStr(RandomUtil.getRandomStr());
+        wxRequest.setSign(new PayUtil().sign(MapUtil.buildMap(wxRequest), wxAppPayConfig.getMchKey()));
+        RequestBody body = RequestBody.create(MediaType.parse("application/xml; charset=utf-8"), XmlUtil.toString(wxRequest));
+
+        Call<WxCloseOrderResponse> call = retrofit.create(WxPayApi.class).closeOrder(body);
+        Response<WxCloseOrderResponse> retrofitResponse  = null;
+        try{
+            retrofitResponse = call.execute();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (!retrofitResponse.isSuccessful()) {
+            throw new RuntimeException("【微信订单关闭】网络异常");
+        }
+        WxCloseOrderResponse response = retrofitResponse.body();
+        if(!response.getReturnCode().equals(WxPayConstants.SUCCESS)) {
+            throw new RuntimeException("【微信订单查询】returnCode != SUCCESS, returnMsg = " + response.getReturnMsg());
+        }
+        if (!response.getResultCode().equals(WxPayConstants.SUCCESS)) {
+            throw new RuntimeException("【微信订单查询】resultCode != SUCCESS, err_code = " + response.getErrCode() + ", err_code_des=" + response.getErrCodeDes());
+        }
+        CloseOrderResponse closeOrderResponse = new CloseOrderResponse();
+        closeOrderResponse.setResultCode(response.getResultCode());
+        closeOrderResponse.setResultMsg(response.getResultMsg());
+        return closeOrderResponse;
     }
 
     private RefundResponse buildRefundResponse(WxRefundResponse response) {
