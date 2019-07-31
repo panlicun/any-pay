@@ -16,7 +16,9 @@ public class WxPayAsyncResponse {
     @Element(name = "return_msg", required = false)
     private String returnMsg;
 
-    /** 以下字段在return_code为SUCCESS的时候有返回. */
+    /**
+     * 以下字段在return_code为SUCCESS的时候有返回.
+     */
     @Element(name = "appid", required = false)
     private String appid;
 
